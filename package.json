@@ -7,7 +7,7 @@
   "author": "Peter Beshai",
   "license": "MIT",
   "bin": {
-    "graph-wrangle": "bin/cli.js"
+    "graph-wrangle": "bin/graph-wrangle.js"
   },
   "dependencies": {
     "canvas": "^2.0.0-alpha.5",
