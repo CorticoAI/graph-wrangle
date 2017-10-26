@@ -1,0 +1,11 @@
+{
+  "colorField": "genre_like",
+  "colorScheme": {
+    "type": "valueMap",
+    "valueMap": {
+      "Comedy": "purple",
+      "Action": "red"
+    },
+    "defaultColor": "#ccc"
+  }
+}
