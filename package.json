@@ -10,6 +10,7 @@
     "graph-wrangle": "bin/cli.js"
   },
   "dependencies": {
+    "canvas": "^2.0.0-alpha.5",
     "commander": "^2.11.0",
     "d3": "^4.11.0",
     "d3-force-3d": "^1.0.7",

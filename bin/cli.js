@@ -61,17 +61,30 @@ async function layoutCommand(inputFile, options) {
     return;
   }
 
+  // since graph layouts tend to be destructive to the nodes, let's use a copy of them.
+  // also ensure links are expanded and meta data has all expected fields
+  const normalizedGraph = GraphWrangle.normalizeGraph(graph);
+
   // run the layout and get the layout data
-  const layout = await GraphWrangle.layoutGraph(graph, algorithm, numTicks);
+  const layout = await GraphWrangle.layoutGraph(
+    normalizedGraph,
+    algorithm,
+    numTicks
+  );
 
   // create a new graph object with layout in it
   graph = { meta: {}, ...graph };
   graph.meta[layoutKey] = layout;
 
+  // merge into normalized graph too
+  normalizedGraph.meta[layoutKey] = layout;
+
   // output the final results
   if (output) {
     try {
       io.writeGraph(outputPath, graph, format);
+      const imageOutputPath = outputPath.replace(/\.json$/, '.png');
+      await GraphWrangle.drawGraph(normalizedGraph, imageOutputPath);
     } catch (e) {
       console.error('Error writing output file:', e.message);
       return;
