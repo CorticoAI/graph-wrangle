@@ -13,7 +13,8 @@
     "commander": "^2.11.0",
     "d3": "^4.11.0",
     "d3-force-3d": "^1.0.7",
-    "debug": "^3.1.0"
+    "debug": "^3.1.0",
+    "progress": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

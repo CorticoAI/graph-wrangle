@@ -29,7 +29,13 @@ program
     'Specify key to save the graph layout as in the meta object',
     'layout'
   )
+  .option(
+    '-t, --num-ticks <number>',
+    'Specify number of ticks to run the algorithm',
+    parseInt
+  )
   .option('-o, --output <file>', 'Specify output graph JSON file')
+  .option('-f, --format', 'Format JSON output')
   .action(layoutCommand);
 
 /**
@@ -37,7 +43,7 @@ program
  * output it to stdout or to a file.
  */
 async function layoutCommand(inputFile, options) {
-  const { algorithm, output } = options;
+  const { algorithm, output, format, layoutKey, numTicks } = options;
   const inputPath = path.resolve(inputFile);
   let outputPath;
   debug(`Running ${algorithm} layout on ${inputPath}`);
@@ -56,16 +62,16 @@ async function layoutCommand(inputFile, options) {
   }
 
   // run the layout and get the layout data
-  const layout = await GraphWrangle.layoutGraph(graph, algorithm);
+  const layout = await GraphWrangle.layoutGraph(graph, algorithm, numTicks);
 
   // create a new graph object with layout in it
   graph = { meta: {}, ...graph };
-  graph.meta.layout = layout;
+  graph.meta[layoutKey] = layout;
 
   // output the final results
   if (output) {
     try {
-      io.writeGraph(outputPath, graph);
+      io.writeGraph(outputPath, graph, format);
     } catch (e) {
       console.error('Error writing output file:', e.message);
       return;
