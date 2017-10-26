@@ -79,6 +79,11 @@ async function layoutCommand(inputFile, options) {
   // merge into normalized graph too
   normalizedGraph.meta[layoutKey] = layout;
 
+  // TODO: remove this from layout command...
+  const style = GraphWrangle.styleGraph(normalizedGraph, 'genre_like');
+  normalizedGraph.meta.style = style;
+  graph.meta.style = style;
+
   // output the final results
   if (output) {
     try {
