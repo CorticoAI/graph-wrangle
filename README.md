@@ -18,7 +18,7 @@ For drawing graphs, node-canvas is used which requires Cairo and Pango. For deta
 From a command-line:
 
 ```
-gw style -i sample-data/100nodes.json -k genre_like | \
+gw style -i examples/data/100nodes.json -k genre_like | \
   gw layout -a force-atlas2 -t 200 | \
   gw draw -o my_graph.png -w 600 -h 600
 ```
