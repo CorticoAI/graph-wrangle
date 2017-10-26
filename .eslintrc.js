@@ -88,7 +88,7 @@ module.exports = {
 
   parser: 'babel-eslint',
 
-  plugins: ['import', 'flowtype'],
+  plugins: ['import'],
 
   env: {
     browser: true,
@@ -247,8 +247,8 @@ module.exports = {
     'import/no-webpack-loader-syntax': 'error',
 
     // https://github.com/gajus/eslint-plugin-flowtype
-    'flowtype/define-flow-type': 'warn',
-    'flowtype/require-valid-file-annotation': 'warn',
-    'flowtype/use-flow-type': 'warn',
+    // 'flowtype/define-flow-type': 'warn',
+    // 'flowtype/require-valid-file-annotation': 'warn',
+    // 'flowtype/use-flow-type': 'warn',
   },
 };

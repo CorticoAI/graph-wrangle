@@ -1,0 +1,1 @@
+{"meta":{"fields":[{"name":"id","type":"node-id"},{"name":"foo","type":"string"},{"name":"bar","type":"integer"}],"layout":{"algorithm":"d3-force","nodes":{"nodes":[{"id":1},{"id":2},{"id":3}]}}},"nodes":[{"id":1,"foo":"one","bar":50},{"id":2,"foo":"two","bar":12},{"id":3,"foo":"three","bar":99}],"links":[[1,2],[3,1]]}

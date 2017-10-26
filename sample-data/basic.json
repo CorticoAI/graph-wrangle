@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    { "id": 1, "foo": "one", "bar": 50 },
+    { "id": 2, "foo": "two", "bar": 12 },
+    { "id": 3, "foo": "three", "bar": 99 }
+  ],
+  "links": [[1, 2], [3, 1]],
+  "meta": {
+    "fields": [
+      { "name": "id", "type": "node-id" },
+      { "name": "foo", "type": "string" },
+      { "name": "bar", "type": "integer" }
+    ]
+  }
+}

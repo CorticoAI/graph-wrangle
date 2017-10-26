@@ -4,22 +4,75 @@
  * Module dependencies.
  */
 
+// enable DEBUG messages when running as CLI
+if (process.env['DEBUG'] == null) {
+  process.env['DEBUG'] = 'graph-wrangle:*';
+}
+
 const program = require('commander');
+const debug = require('debug')('graph-wrangle:cli');
+const path = require('path');
+
+const GraphWrangle = require('../lib/index');
+const io = require('../lib/io');
 
 program
-  .version('0.1.0')
-  .option('-p, --peppers', 'Add peppers')
-  .option('-P, --pineapple', 'Add pineapple')
-  .option('-b, --bbq-sauce', 'Add bbq sauce')
+  .command('layout <file>')
+  .description('Compute the layout for a given graph')
   .option(
-    '-c, --cheese [type]',
-    'Add the specified type of cheese [marble]',
-    'marble'
+    '-a, --algorithm <name>',
+    'Specify graph layout algorithm',
+    'd3-force'
   )
-  .parse(process.argv);
+  .option(
+    '-k, --layout-key <name>',
+    'Specify key to save the graph layout as in the meta object',
+    'layout'
+  )
+  .option('-o, --output <file>', 'Specify output graph JSON file')
+  .action(layoutCommand);
 
-console.log('you ordered a pizza with:');
-if (program.peppers) console.log('  - peppers');
-if (program.pineapple) console.log('  - pineapple');
-if (program.bbqSauce) console.log('  - bbq');
-console.log('  - %s cheese', program.cheese);
+/**
+ * Read in a graph from a file and run a layout on it. Then
+ * output it to stdout or to a file.
+ */
+async function layoutCommand(inputFile, options) {
+  const { algorithm, output } = options;
+  const inputPath = path.resolve(inputFile);
+  let outputPath;
+  debug(`Running ${algorithm} layout on ${inputPath}`);
+  if (output) {
+    outputPath = path.resolve(output);
+    debug(`Will write output to ${outputPath}`);
+  }
+
+  // read in the input graph
+  let graph;
+  try {
+    graph = io.loadGraph(inputPath);
+  } catch (e) {
+    console.error('Error reading input file:', e.message);
+    return;
+  }
+
+  // run the layout and get the layout data
+  const layout = await GraphWrangle.layoutGraph(graph, algorithm);
+
+  // create a new graph object with layout in it
+  graph = { meta: {}, ...graph };
+  graph.meta.layout = layout;
+
+  // output the final results
+  if (output) {
+    try {
+      io.writeGraph(outputPath, graph);
+    } catch (e) {
+      console.error('Error writing output file:', e.message);
+      return;
+    }
+  } else {
+    // write to STD OUT
+    console.log(JSON.stringify(graph));
+  }
+}
+program.parse(process.argv);

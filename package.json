@@ -1,9 +1,9 @@
 {
   "name": "graph-wrangle",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A command-line tool and library for wrangling network graph data",
   "main": "lib/index.js",
-  "repository": "https://github.com/pbeshai/graph-wrangle",
+  "repository": "https://github.com/cortico/graph-wrangle",
   "author": "Peter Beshai",
   "license": "MIT",
   "bin": {
@@ -12,12 +12,12 @@
   "dependencies": {
     "commander": "^2.11.0",
     "d3": "^4.11.0",
-    "d3-force-3d": "^1.0.7"
+    "d3-force-3d": "^1.0.7",
+    "debug": "^3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.1.1",
-    "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0"
   }
 }
