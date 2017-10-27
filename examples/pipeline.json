@@ -3,7 +3,6 @@
     {
       "command": "layout",
       "inputFile": "examples/data/100nodes.json",
-      "outputFile": "output/100nodes_layout.json",
       "formatOutput": true,
       "options": {
         "algorithm": "d3-force",
@@ -13,7 +12,6 @@
     },
     {
       "command": "style",
-      "inputFile": "output/100nodes_layout.json",
       "outputFile": "output/100nodes_layout_styled.json",
       "formatOutput": true,
       "options": {
@@ -30,9 +28,25 @@
     },
     {
       "command": "draw",
-      "inputFile": "output/100nodes_layout_styled.json",
       "options": {
         "imageOutput": "output/100nodes.png",
+        "width": 600,
+        "height": 600
+      }
+    },
+    {
+      "command": "style",
+      "outputFile": "output/100nodes_layout_styled_rgb.json",
+      "formatOutput": true,
+      "options": {
+        "colorKey": "genre_like",
+        "colorScheme": ["red", "green", "blue"]
+      }
+    },
+    {
+      "command": "draw",
+      "options": {
+        "imageOutput": "output/100nodes_rgb.png",
         "width": 600,
         "height": 600
       }
