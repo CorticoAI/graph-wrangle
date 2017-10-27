@@ -2,17 +2,22 @@
   "commands": [
     {
       "command": "layout",
-      "config": {
-        "inputFile": "examples/data/100nodes.json",
-        "outputFile": "output/100nodes_layout.json"
+      "inputFile": "examples/data/100nodes.json",
+      "outputFile": "output/100nodes_layout.json",
+      "formatOutput": true,
+      "options": {
+        "algorithm": "d3-force",
+        "numTicks": 100,
+        "layoutKey": "layout"
       }
     },
     {
       "command": "style",
-      "config": {
-        "inputFile": "output/100nodes_layout.json",
-        "outputFile": "output/100nodes_layout_styled.json",
-        "colorField": "genre_like",
+      "inputFile": "output/100nodes_layout.json",
+      "outputFile": "output/100nodes_layout_styled.json",
+      "formatOutput": true,
+      "options": {
+        "colorKey": "genre_like",
         "colorScheme": {
           "type": "valueMap",
           "valueMap": {
@@ -25,9 +30,9 @@
     },
     {
       "command": "draw",
-      "config": {
-        "inputFile": "output/100nodes_layout_styled.json",
-        "outputFile": "output/100nodes.png",
+      "inputFile": "output/100nodes_layout_styled.json",
+      "options": {
+        "imageOutput": "output/100nodes.png",
         "width": 600,
         "height": 600
       }
