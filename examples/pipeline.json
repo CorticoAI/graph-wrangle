@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "command": "layout",
+      "config": {
+        "inputFile": "examples/data/100nodes.json",
+        "outputFile": "output/100nodes_layout.json"
+      }
+    },
+    {
+      "command": "style",
+      "config": {
+        "inputFile": "output/100nodes_layout.json",
+        "outputFile": "output/100nodes_layout_styled.json",
+        "colorField": "genre_like",
+        "colorScheme": {
+          "type": "valueMap",
+          "valueMap": {
+            "Comedy": "purple",
+            "Action": "red"
+          },
+          "defaultColor": "#ccc"
+        }
+      }
+    },
+    {
+      "command": "draw",
+      "config": {
+        "inputFile": "output/100nodes_layout_styled.json",
+        "outputFile": "output/100nodes.png",
+        "width": 600,
+        "height": 600
+      }
+    }
+  ]
+}
