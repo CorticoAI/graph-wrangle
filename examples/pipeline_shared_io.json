@@ -1,0 +1,53 @@
+{
+  "outputDirectory": "output/[timestamp]",
+  "commands": [
+    {
+      "command": "layout",
+      "options": {
+        "algorithm": "d3-force",
+        "numTicks": 100,
+        "layoutKey": "layout"
+      }
+    },
+    {
+      "command": "style",
+      "outputFile": "[name]_style1.json",
+      "formatOutput": true,
+      "options": {
+        "colorKey": "genre_like",
+        "colorScheme": {
+          "type": "valueMap",
+          "valueMap": {
+            "Comedy": "purple",
+            "Action": "red"
+          },
+          "defaultColor": "#ccc"
+        }
+      }
+    },
+    {
+      "command": "draw",
+      "options": {
+        "imageOutput": "[name]_purple_red.png",
+        "width": 600,
+        "height": 600
+      }
+    },
+    {
+      "command": "style",
+      "outputFile": "[name]_style2.json",
+      "formatOutput": true,
+      "options": {
+        "colorKey": "genre_like",
+        "colorScheme": ["red", "green", "blue"]
+      }
+    },
+    {
+      "command": "draw",
+      "options": {
+        "width": 600,
+        "height": 600
+      }
+    }
+  ]
+}
