@@ -10,6 +10,12 @@
       }
     },
     {
+      "command": "filter",
+      "options": {
+        "filterStat": { "stat": "degree", "operator": "gt", "value": 0 }
+      }
+    },
+    {
       "command": "style",
       "outputFile": "[name]_style1.json",
       "formatOutput": true,
