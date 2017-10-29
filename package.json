@@ -6,6 +6,7 @@
   "repository": "https://github.com/cortico/graph-wrangle",
   "author": "Peter Beshai",
   "license": "MIT",
+  "engines": { "node": ">=8" },
   "bin": {
     "graph-wrangle": "bin/graph-wrangle.js"
   },
