@@ -47,3 +47,34 @@ Example usage:
 ```
 graph-wrangle pipeline --config examples/pipeline_shared_io.json -i examples/data/100nodes.json
 ```
+
+You can specify multiple files to run in succession by passing multiple `-i <file>` arguments.
+
+```
+graph-wrangle pipeline --config prepare-graphs.json \
+  -i week-31-bundle.json \
+  -i week-33-bundle.json \
+  -i week-35-bundle.json
+```
+
+Note that globs are also supported:
+
+```
+graph-wrangle pipeline --config prepare-graphs.json -i "week-*-bundle.json"
+```
+
+### Create sequence of graphs
+
+For later animation, it can be helpful to precompute differences between sequential pairs of graphs. Use the **sequence** command to do so.
+
+Example usage:
+
+```
+graph-wrangle sequence -o sequence.json graph1.json graph2.json graph3.json
+```
+
+With globs too:
+
+```
+graph-wrangle sequence -o sequence.json "graph*.json"
+```
