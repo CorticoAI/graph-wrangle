@@ -12,6 +12,9 @@
   "bin": {
     "graph-wrangle": "bin/graph-wrangle.js"
   },
+  "scripts": {
+    "prettier": "prettier --write \"{bin,lib}/**/*.js\""
+  },
   "dependencies": {
     "canvas": "^2.0.0-alpha.5",
     "commander": "^2.11.0",
@@ -26,6 +29,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.1.1",
-    "eslint-plugin-import": "^2.6.0"
+    "eslint-plugin-import": "^2.6.0",
+    "prettier": "1.7.4"
   }
 }
