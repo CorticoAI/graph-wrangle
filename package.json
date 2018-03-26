@@ -1,6 +1,6 @@
 {
   "name": "graph-wrangle",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A command-line tool and library for wrangling network graph data",
   "main": "lib/index.js",
   "repository": "https://github.com/cortico/graph-wrangle",
